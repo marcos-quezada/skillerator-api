@@ -1,4 +1,3 @@
-using Darnton.OpenWeather.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,11 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Skillerator.Services;
 
-namespace InternetFridge.API
+namespace Skillerator
 {
     public class Startup
     {
@@ -34,7 +31,7 @@ namespace InternetFridge.API
                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
             ));
 
-            services.AddHttpClient<IOpenWeatherService, OpenWeatherService>();
+            services.AddScoped<IEmailSender, ZohoMailEmailSender>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Darnton.OpenWeather" Version="0.1.1" />
+    <PackageReference Include="Hangfire" Version="1.7.10" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
   </ItemGroup>
 

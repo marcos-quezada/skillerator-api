@@ -1,4 +1,4 @@
-namespace skillerator.Models{
+namespace Skillerator.Models{
     public class AuslaenderbehoerdeData{
         public long Id {get; set;}
         public string Typ {get; set;}
