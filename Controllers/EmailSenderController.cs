@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Hangfire;
 using Skillerator.Services;
+using Skillerator.Models;
 
 namespace Skillerator.Controllers
 {
@@ -26,12 +27,22 @@ namespace Skillerator.Controllers
         }
 
         [HttpPost]
-        public void Post()
+        public IActionResult Post(EmailContentData EmailData)
         {
+            if (EmailData is null){
+                return BadRequest("You must submit the required email data.");
+            }
+
+            if (string.IsNullOrEmpty(EmailData.to)){
+                return BadRequest("You must provide at least a detination email address");
+            }
+
             IEmailSender EmailSender = new ZohoMailEmailSender(_config);
-            EmailSender.SendEmail("quezad@gmail.com",
-                    "You received a new file",
-                    "Test");
+            EmailSender.SendEmail(EmailData.to,
+                    EmailData.subject,
+                    EmailData.body);
+
+            return Ok();
         }
     }
 }
