@@ -28,6 +28,8 @@ namespace Skillerator.Services{
                 mailMessage.Subject = title;
                 mailMessage.Body = body;
 
+                mailMessage.IsBodyHtml = true;
+
                 client.Send(mailMessage);
             }
         }
